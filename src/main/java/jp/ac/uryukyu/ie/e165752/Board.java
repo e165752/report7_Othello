@@ -31,16 +31,16 @@ public class Board {
     /* ボードを表示する */
     public void print() {
 
-        for(int i = 0; i < 8; i++){
+        for (int i = 0; i < 8; i++) {
             System.out.print(i + "|");
         }
         System.out.print("\n");
 
         for (int line = 0; line < 8; line++) {
             for (int row = 0; row < 8; row++) {
-                if(row == 7){
+                if (row == 7) {
                     System.out.println(board[line][row] + " ");
-                }else{
+                } else {
                     System.out.print(board[line][row] + " ");
                 }
             }
@@ -48,11 +48,21 @@ public class Board {
         System.out.println("\n");
     }
 
-    public void putBoard(int[] a,int turn){
+    public boolean putBoard(int[] a, int turn) {
+
+        boolean success = true;
+
         int piece_line = a[0];
         int piece_row = a[1];
         System.out.print(a[0]);
         System.out.println(a[1]);
-        board[piece_line][piece_row] = 1;
+
+        if (board[piece_line][piece_row] != 0) {
+            System.out.println("ここに駒は置けません。");
+            success = false;
+        } else {
+            board[piece_line][piece_row] = turn;
+        }
+        return success;
     }
 }

@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 public class Player1 {
 
-
     private int piece_place[] = put();
 
     public int[] getPiece_place(){
