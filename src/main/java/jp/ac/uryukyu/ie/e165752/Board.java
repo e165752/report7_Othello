@@ -16,15 +16,15 @@ public class Board {
     /* ボードを初期化する */
     public Board() {
         for (int row = 0; row < 8; row++) {
-            for (int column = 0; column < 8; column++) {
-                board[row][column] = EMPTY;
+            for (int line = 0; line < 8; line++) {
+                board[line][row] = EMPTY;
             }
         }
 
         board[3][3] = SQUARE_MINE;
         board[3][4] = SQUARE_OPPONENT;
-        board[4][3] = SQUARE_MINE;
-        board[4][4] = SQUARE_OPPONENT;
+        board[4][3] = SQUARE_OPPONENT;
+        board[4][4] = SQUARE_MINE;
 
     }
 
@@ -36,14 +36,23 @@ public class Board {
         }
         System.out.print("\n");
 
-        for (int row = 0; row < 8; row++) {
-            for (int column = 0; column < 8; column++) {
-                if(column == 7){
-                    System.out.println(board[row][column] + " ");
+        for (int line = 0; line < 8; line++) {
+            for (int row = 0; row < 8; row++) {
+                if(row == 7){
+                    System.out.println(board[line][row] + " ");
                 }else{
-                    System.out.print(board[row][column] + " ");
+                    System.out.print(board[line][row] + " ");
                 }
             }
         }
+        System.out.println("\n");
+    }
+
+    public void putBoard(int[] a,int turn){
+        int piece_line = a[0];
+        int piece_row = a[1];
+        System.out.print(a[0]);
+        System.out.println(a[1]);
+        board[piece_line][piece_row] = 1;
     }
 }
