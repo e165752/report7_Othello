@@ -6,7 +6,6 @@ package jp.ac.uryukyu.ie.e165752;
  */
 public class Board {
 
-
     private int[][] board = new int[8][8]; //二次元配列でボードを表現する
 
     private static final int EMPTY = 0; //空
@@ -48,21 +47,28 @@ public class Board {
         System.out.println("\n");
     }
 
-    public boolean putBoard(int[] a, int turn) {
+    public void putBoard(int piece_line, int piece_row, int turn, boolean canput) {
 
-        boolean success = true;
+        if (canput == true) {
+            board[piece_line][piece_row] = turn;
+        }
+    }
+
+
+    public boolean canPut(int[] a, int turn) {
+
+        boolean canput = true;
 
         int piece_line = a[0];
         int piece_row = a[1];
         System.out.print(a[0]);
         System.out.println(a[1]);
 
-        if (board[piece_line][piece_row] != 0) {
-            System.out.println("ここに駒は置けません。");
-            success = false;
-        } else {
-            board[piece_line][piece_row] = turn;
+        if (board[piece_line][piece_row] != 0 || piece_line > 7 || piece_row > 7) {//そこに駒がある、またはボードからはみ出すなら
+            canput = false;
         }
-        return success;
+        putBoard(piece_line, piece_row, turn, canput);
+
+        return canput;
     }
 }
