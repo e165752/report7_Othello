@@ -31,7 +31,7 @@ public class Main {
 
             while (canput == false) {
                 System.out.println("ここに駒は置けません。");
-                canput = board.canPut(player1.put(), 1);
+                canput = board.canPut(player1.put(), 2);
             }
             board.print();
         }

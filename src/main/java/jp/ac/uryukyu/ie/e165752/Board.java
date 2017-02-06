@@ -60,12 +60,24 @@ public class Board {
         int piece_line = a[0];
         int piece_row = a[1];
 
-        if (board[piece_line][piece_row] != 0 || piece_line > 7 || piece_row > 7) {//そこに駒がある、またはボードからはみ出すなら
+        if (board[piece_line][piece_row] != 0 || piece_line > 7 || piece_row > 7) {  //そこに駒がある、またはボードからはみ出すなら
             canput = false;
         }
+        /*
+        else {
+            // 左へ
+            int i;
+            if (piece_row > 1 && board[piece_line][piece_row-1] == 2) {
+                for ( i = piece_row-2; i > 0 && board[piece_line][i] == 2; i--);
+                if (board[piece_line][i] == turn) {
+                    System.out.println("左が裏返せる");
+                    canput = true;
+                    return canput;
+                }
+
+            }
+            */
         putPiece(piece_line, piece_row, turn, canput);
         return canput;
+        }
     }
-
-
-}
