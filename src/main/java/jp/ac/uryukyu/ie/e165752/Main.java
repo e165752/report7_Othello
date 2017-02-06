@@ -25,9 +25,7 @@ public class Main {
             board.print();
 
             System.out.println("Player2のターン");
-
             Player1 player2 = new Player1();
-
             int[] piece_player2 = player2.getPiece_place();
             canput = board.canPut(piece_player2, 2);
 

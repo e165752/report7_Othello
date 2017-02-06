@@ -19,12 +19,10 @@ public class Board {
                 board[line][row] = EMPTY;
             }
         }
-
         board[3][3] = SQUARE_MINE;
         board[3][4] = SQUARE_OPPONENT;
         board[4][3] = SQUARE_OPPONENT;
         board[4][4] = SQUARE_MINE;
-
     }
 
     /* ボードを表示する */
@@ -47,28 +45,27 @@ public class Board {
         System.out.println("\n");
     }
 
-    public void putBoard(int piece_line, int piece_row, int turn, boolean canput) {
 
+    public void putPiece(int piece_line, int piece_row, int turn, boolean canput) {
         if (canput == true) {
             board[piece_line][piece_row] = turn;
         }
     }
 
-
+    /* 駒が置けるかどうかチェック */
     public boolean canPut(int[] a, int turn) {
 
         boolean canput = true;
 
         int piece_line = a[0];
         int piece_row = a[1];
-        System.out.print(a[0]);
-        System.out.println(a[1]);
 
         if (board[piece_line][piece_row] != 0 || piece_line > 7 || piece_row > 7) {//そこに駒がある、またはボードからはみ出すなら
             canput = false;
         }
-        putBoard(piece_line, piece_row, turn, canput);
-
+        putPiece(piece_line, piece_row, turn, canput);
         return canput;
     }
+
+
 }
